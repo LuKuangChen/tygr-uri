@@ -30,3 +30,14 @@ IPv6 zone IDs are not accepted: RFC 9844 reverted RFC 6874, which added them.
 Reference resolution and normalization are not covered.
 
 The tests check the examples of RFC 3986, RFC 4291 and RFC 5952.
+
+## License
+
+Licensed under either of
+[Apache License, Version 2.0](https://github.com/LuKuangChen/tygr-uri/blob/main/LICENSE-APACHE)
+or [MIT license](https://github.com/LuKuangChen/tygr-uri/blob/main/LICENSE-MIT)
+at your option.
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in this work by you, as defined in the Apache-2.0 license, shall
+be dual licensed as above, without any additional terms or conditions.
