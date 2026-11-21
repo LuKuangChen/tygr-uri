@@ -114,7 +114,9 @@ fn components(uri: &str) -> Vec<String> {
     let uri = Uri::parse(uri).unwrap();
     let undefined = || "<undefined>".to_string();
     let (authority, path) = match &uri.hier_part {
-        HierPart::Authority { authority, path } => (authority.prefixed.print(), path.print()),
+        HierPart::Authority {
+            authority, path, ..
+        } => (authority.print(), path.print()),
         other => (undefined(), other.print()),
     };
     let query = uri

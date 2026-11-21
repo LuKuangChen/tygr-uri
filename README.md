@@ -10,8 +10,8 @@ use tygr_uri::{HierPart, Uri};
 
 let uri = Uri::parse("foo://example.com:8042/over/there?name=ferret#nose").unwrap();
 assert_eq!(uri.scheme.as_str(), "foo");
-let HierPart::Authority { authority, path } = &uri.hier_part else { panic!() };
-assert_eq!(authority.prefixed.print(), "example.com:8042");
+let HierPart::Authority { authority, path, .. } = &uri.hier_part else { panic!() };
+assert_eq!(authority.print(), "example.com:8042");
 assert_eq!(path.print(), "/over/there");
 ```
 

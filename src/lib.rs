@@ -10,7 +10,8 @@ use tygr::{Grammar, Parse, Prefix, Raw, StringEq, StringEqCI, Suffix, Vec1, Wrap
 
 #[derive(Grammar, Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Uri {
-    pub scheme: Suffix<Scheme, StringEq!(":")>,
+    pub scheme: Scheme,
+    pub colon: StringEq!(":"),
     pub hier_part: HierPart,
     pub query: Option<Prefix<StringEq!("?"), Query>>,
     pub fragment: Option<Prefix<StringEq!("#"), Fragment>>,
@@ -19,7 +20,8 @@ pub struct Uri {
 #[derive(Grammar, Debug, Clone, PartialEq, Eq, Hash)]
 pub enum HierPart {
     Authority {
-        authority: Prefix<StringEq!("//"), Authority>,
+        double_slash: StringEq!("//"),
+        authority: Authority,
         path: PathAbempty,
     },
     Absolute(PathAbsolute),
@@ -35,7 +37,8 @@ pub enum UriReference {
 
 #[derive(Grammar, Debug, Clone, PartialEq, Eq, Hash)]
 pub struct AbsoluteUri {
-    pub scheme: Suffix<Scheme, StringEq!(":")>,
+    pub scheme: Scheme,
+    pub colon: StringEq!(":"),
     pub hier_part: HierPart,
     pub query: Option<Prefix<StringEq!("?"), Query>>,
 }
@@ -50,7 +53,8 @@ pub struct RelativeRef {
 #[derive(Grammar, Debug, Clone, PartialEq, Eq, Hash)]
 pub enum RelativePart {
     Authority {
-        authority: Prefix<StringEq!("//"), Authority>,
+        double_slash: StringEq!("//"),
+        authority: Authority,
         path: PathAbempty,
     },
     Absolute(PathAbsolute),
@@ -152,7 +156,8 @@ pub struct PathAbempty(pub Vec<Prefix<StringEq!("/"), Segment>>);
 
 #[derive(Grammar, Debug, Clone, PartialEq, Eq, Hash)]
 pub struct PathAbsolute(
-    pub Prefix<StringEq!("/"), Option<(SegmentNz, Vec<Prefix<StringEq!("/"), Segment>>)>>,
+    pub StringEq!("/"),
+    pub Option<(SegmentNz, Vec<Prefix<StringEq!("/"), Segment>>)>,
 );
 
 #[derive(Grammar, Debug, Clone, PartialEq, Eq, Hash)]
