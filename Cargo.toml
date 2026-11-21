@@ -3,8 +3,13 @@ name = "tygr-uri"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.88"
+license = "MIT OR Apache-2.0"
 description = "The URI generic syntax of RFC 3986, written as tygr types: a parser, a printer, and the grammar in EBNF."
 repository = "https://github.com/LuKuangChen/tygr-uri"
+readme = "README.md"
+keywords = ["uri", "url", "rfc3986", "parser", "grammar"]
+categories = ["parser-implementations", "web-programming"]
+include = ["src/**", "tests/**", "README.md", "CHANGELOG.md", "LICENSE-*"]
 
 [dependencies]
 tygr = "0.9"
